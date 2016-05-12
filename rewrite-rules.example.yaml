@@ -1,0 +1,8 @@
+---
+example.cn:
+  rewriterules:
+    - ^/images/(.*)$ http://images.example.com/$1 redirect;
+    - ^/js/(.*)$ http://scripts.example.com/$1 permanent;
+another.com:
+  rewriterules:
+    - ^(.*)$ https://thirdname.com/$1 permanent;
