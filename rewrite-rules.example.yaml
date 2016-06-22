@@ -1,8 +1,13 @@
 ---
-example.cn:
-  rewriterules:
-    - ^/images/(.*)$ http://images.example.com/$1 redirect;
-    - ^/js/(.*)$ http://scripts.example.com/$1 permanent;
-another.com:
-  rewriterules:
-    - ^(.*)$ https://thirdname.com/$1 permanent;
+email: support@yourdomain.com
+target_domains:
+  google.com:
+    redir_domains:
+      - foogle.com
+      - hoogle.com
+      - toogle.com
+  gmail.com:
+    redir_domains:
+      - fmail.com
+      - hmail.com
+      - tmail.com
