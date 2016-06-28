@@ -1,0 +1,22 @@
+sudo: required
+
+language: python
+
+services:
+  - docker
+
+matrix:
+  include:
+    - buildstep: "test"
+      env: BUILD_STEP=test
+      services: docker
+    - buildstep: "store-container"
+      env: BUILD_STEP=store-container
+      services: docker
+
+before_install:
+  - docker build -t sellerlabs/nginx-rewriter .
+  - chmod +x build.sh
+
+script:
+  - ./build.sh $BUILD_STEP

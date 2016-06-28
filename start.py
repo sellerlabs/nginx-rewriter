@@ -70,8 +70,13 @@ server {
     def start_nginx(self):
         print "testing config..."
         sys.stdout.flush()
-        p = Popen(["/usr/sbin/nginx","-t"], stderr=sys.stderr, stdout=sys.stdout)
+        p = Popen(["/usr/sbin/nginx","-t"], stderr=PIPE, stdout=PIPE)
         p.wait()
+        output = p.communicate()[1]
+        print output
+        if "test failed" in output:
+            # Exit program with status code "1" if tests failed.
+            sys.exit(1)
         print "starting nginx in the foreground"
         sys.stdout.flush()
         p = Popen(["/usr/sbin/nginx","-g", "daemon off;"], stderr=sys.stderr, stdout=sys.stdout)
